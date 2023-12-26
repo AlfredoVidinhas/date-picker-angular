@@ -15,7 +15,7 @@
   </a>
 </p>
 
-![alt text](https://github.com/AlfredoVidinhas/Conversor-RGB-HSV-CMYK/blob/main/image.png)
+![alt text](https://github.com/AlfredoVidinhas/date-picker-angular/blob/master/angular-date-picker.png)
 
 # DatePicker
 
