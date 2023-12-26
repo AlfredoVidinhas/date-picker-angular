@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?8ip6wl');
+  src:  url('fonts/icomoon.eot?8ip6wl#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?8ip6wl') format('truetype'),
+    url('fonts/icomoon.woff?8ip6wl') format('woff'),
+    url('fonts/icomoon.svg?8ip6wl#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-plus:before {
+  content: "\e923";
+}
+.icon-close:before {
+  content: "\e920";
+}
+.icon-editar:before {
+  content: "\e915";
+}
+.icon-apagar:before {
+  content: "\e916";
+}
+.icon-pesquisa:before {
+  content: "\e913";
+}
+.icon-calendario:before {
+  content: "\e914";
+}
+.icon-seta-up:before {
+  content: "\e90b";
+}
+.icon-hashtag:before {
+  content: "\e911";
+}
+.icon-seta-down:before {
+  content: "\e901";
+}
+.icon-seta-right:before {
+  content: "\e91a";
+}
+.icon-seta-left:before {
+  content: "\e91b";
+}

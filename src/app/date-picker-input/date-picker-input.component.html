@@ -1,0 +1,82 @@
+<div class="relative" (clickOutside)="hideCalendar($event)" exclude=".date-click">
+  <div (click)="showCalendar()" class="flex items-center justify-between min-w-[11rem] pl-5 pr-5 bg-gray-100 py-[5.5px] cursor-pointer border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-200 focus:border-indigo-200 focus:z-10">
+    <span class="text-sm">{{placeHolder}}</span>
+    <i class="icon-calendario p-0 text-base"></i>
+  </div>
+
+  <div [@toggleHeight]="isDropped ? 'show' : 'hide'" class="date absolute left-0 w-[296px] opacity-0 p-4 mt-2 bg-[#FCFCFC] border border-gray-300 rounded-lg z-50">
+    <ng-container *ngTemplateOutlet="currentApresentation == 1 ? header1 : currentApresentation == 2 ? header2 : header3"></ng-container>
+    <ng-container *ngTemplateOutlet="currentApresentation == 1 ? grid1 : currentApresentation == 2 ? grid2 : grid3"></ng-container>
+    <div></div>
+  </div>
+</div>
+
+
+<ng-template #header1>
+  <div class="date-click flex justify-between">
+    <button type="button" (click)="changeMonth(false)" [class.disabled]="isMinDisabled" class="flex items-center justify-start rounded-lg text-accent font-bold text-xl cursor-pointer bg-gray-50 p-1 border-[1px] border-solid border-gray-300">
+      <i class="p-0 icon-seta-left"></i>
+    </button>
+
+    <button type="button" (click)="changeHeaderAndGrid(2)" class="date-click font-medium">
+      {{getMonthName(currentDate.month) + ' ' + currentDate.year}}
+    </button>
+
+    <button type="button" (click)="changeMonth(true)" [class.disabled]="isMaxDisabled" class="flex items-center justify-start rounded-lg text-accent font-bold text-xl cursor-pointer bg-gray-50 p-1 border-[1px] border-solid border-gray-300">
+      <i class="p-0 icon-seta-right"></i>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #grid1>
+  <div class="date-click grid grid-cols-7 mt-3 gap-2">
+    <button type="button" *ngFor="let item of weekList" class="date-click week"> {{item}} </button>
+    <button type="button" *ngFor="let item of daysOfMonth" [class.today]="item.isToday" [class.current]="item.isCurrent" [class.disabled]="max ? (item | validatMaxDate: max) : (item | validatMinDate: min)" (click)="selectDay(item)" class="item"> {{item.day}} </button>
+  </div>
+</ng-template>
+
+
+<ng-template #header2>
+  <div class="flex justify-between">
+    <button type="button" (click)="changeYear(false)" [class.disabled]="isMinDisabled" class="flex items-center justify-start rounded-lg text-accent font-bold text-xl cursor-pointer bg-gray-50 p-1 border-[1px] border-solid border-gray-300">
+      <i class="p-0 icon-seta-left"></i>
+    </button>
+
+    <button type="button" (click)="changeHeaderAndGrid(3)" class="date-click font-medium">
+      {{currentDate.year}}
+    </button>
+
+    <button type="button" (click)="changeYear(true)" [class.disabled]="isMaxDisabled" class="flex items-center justify-start rounded-lg text-accent font-bold text-xl cursor-pointer bg-gray-50 p-1 border-[1px] border-solid border-gray-300">
+      <i class="p-0 icon-seta-right"></i>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #grid2>
+  <div class="date-click grid grid-cols-4 mt-3 gap-2">
+    <button type="button" *ngFor="let item of monthList" [class.today]="item.isToday" [class.current]="item.isCurrent" (click)="selectMonth(item)" [class.disabled]="item | validatMaxDate: max : currentDate.year" class="date-click item"> {{item.name}} </button>
+  </div>
+</ng-template>
+
+
+<ng-template #header3>
+  <div class="flex justify-between">
+    <button type="button" (click)="changeYearRange(false)" [class.disabled]="isMinDisabled" class="flex items-center justify-start rounded-lg text-accent font-bold text-xl cursor-pointer bg-gray-50 p-1 border-[1px] border-solid border-gray-300">
+      <i class="p-0 icon-seta-left"></i>
+    </button>
+
+    <button type="button" class="font-medium">
+      {{startYear + ' - ' + endYear}}
+    </button>
+
+    <button type="button" (click)="changeYearRange(true)" [class.disabled]="isMaxDisabled" class="flex items-center justify-start rounded-lg text-accent font-bold text-xl cursor-pointer bg-gray-50 p-1 border-[1px] border-solid border-gray-300">
+      <i class="p-0 icon-seta-right"></i>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #grid3>
+  <div class="date-click grid grid-cols-4 mt-3 gap-2">
+    <button type="button" *ngFor="let item of yearList" [class.today]="item.isToday" [class.current]="item.isCurrent" (click)="selectYear(item)" [class.disabled]="item | validatMaxDate: max" class="date-click item"> {{item.year}} </button>
+  </div>
+</ng-template>

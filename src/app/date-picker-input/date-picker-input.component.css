@@ -1,0 +1,27 @@
+.item {
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 3px 2px;
+}
+
+.item:hover {
+  background-color: #f0f0f0;
+}
+
+.current {
+  background-color: #3E4583;
+  color: white;
+}
+
+.current:hover {
+  background-color: #3E4583;
+}
+
+.today {
+  border: 1px solid #3E4583;
+}
+
+.week {
+  font-weight: 400;
+  color: #757575;
+}
